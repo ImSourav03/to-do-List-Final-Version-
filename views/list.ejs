@@ -1,0 +1,23 @@
+<%- include("header") -%>
+  <div class="box" id="heading">
+    <h1> <%= listTitle %> <br> <%= currentDayDate %> </h1>
+  </div>
+
+  <div class="box" id="contentId">
+    <h3> Hit the + Button to add a new Item and Check the checkbox to remove an item.</h3>
+    <% for (let i=0; i<newListItems.length; i++) { %>
+      <form action="/delete" method="post"  >  
+        <div class="item">
+          <input class="newItemsStyle" type="checkbox" name="checkboxName" value="<%= newListItems[i]._id %> " onchange="this.form.submit()" >
+          <p class="newItemsStyle"><%=  newListItems[i].name  %></p>
+        </div>
+      </form>
+      <% } %>
+
+      <form class="item" action="/" method="post">
+        <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+        <button type="submit" name="list">+</button>
+      </form>
+  </div>
+
+<%- include("footer") -%>
